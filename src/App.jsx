@@ -39,7 +39,7 @@ export default function App() {
       <div className="bg-[#e50C00] text-white flex flex-col justify-center items-center pt-32 pb-20 px-4">
         <img src="/Edge Logo_1 line_White.png" alt="Havas Edge Logo" className="max-w-xs mb-10" />
         <h1 className="text-4xl font-medium text-center">Positive Proforma Estimates</h1>
-        <p className="text-md text-white mt-2">Simulate your campaign results instantly.</p>
+        <p className="text-md text-white mt-2 mb-10">Simulate your campaign results instantly.</p>
       </div>
 
       {/* Bottom Section - Inputs and Outputs */}
@@ -47,6 +47,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6">
           {/* Input Box */}
           <div className="bg-white shadow-md rounded-xl p-6">
+            <h2 className="text-xl font-bold text-center mb-6">Inputs</h2>
             <div className="mb-6">
               <label className="block text-sm font-medium">Budget</label>
               <input
@@ -77,6 +78,14 @@ export default function App() {
           <div className="bg-white shadow-md rounded-xl p-6">
             <h2 className="text-xl font-bold text-center mb-6">Estimated Results</h2>
             <div className="grid grid-cols-2 gap-6">
+              <div>
+                <p className="text-sm text-[#e50C00] uppercase font-medium">CPM</p>
+                <p className="text-2xl">${selected.cpm.toFixed(2)}</p>
+              </div>
+              <div>
+                <p className="text-sm text-[#e50C00] uppercase font-medium">Cost per View</p>
+                <p className="text-2xl">${selected.cpv.toFixed(2)}</p>
+              </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Impressions</p>
                 <p className="text-2xl">{Math.round(impressions).toLocaleString()}</p>
