@@ -38,6 +38,12 @@ export default function App() {
   const roas = (sales * 100) / budget;
   const roasHigh = (salesHigh * 100) / budget;
 
+  const formatNumber = (num) => {
+    if (num >= 1_000_000) return (num / 1_000_000).toFixed(1) + "M";
+    if (num >= 1_000) return (num / 1_000).toFixed(1) + "K";
+    return Math.round(num).toString();
+  };
+
   return (
     <div className="min-h-screen font-[baikal] bg-white">
       {/* Top Section - Red with Logo and Title */}
@@ -85,7 +91,7 @@ export default function App() {
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">CPM</p>
-                <p className="text-2xl">${values[1].cpm.toFixed(2)} - ${values[2].cpm.toFixed(2)}</p>
+                <p className="text-2xl">${Math.round(values[1].cpm)} - ${Math.round(values[2].cpm)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Cost per View</p>
@@ -93,23 +99,23 @@ export default function App() {
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Impressions</p>
-                <p className="text-2xl">{Math.round(impressions).toLocaleString()} - {Math.round(impressionsHigh).toLocaleString()}</p>
+                <p className="text-2xl">{formatNumber(impressions)} - {formatNumber(impressionsHigh)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Households</p>
-                <p className="text-2xl">{Math.round(households).toLocaleString()} - {Math.round(householdsHigh).toLocaleString()}</p>
+                <p className="text-2xl">{formatNumber(households)} - {formatNumber(householdsHigh)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Web Visits</p>
-                <p className="text-2xl">{Math.round(webVisits).toLocaleString()} - {Math.round(webVisitsHigh).toLocaleString()}</p>
+                <p className="text-2xl">{formatNumber(webVisits)} - {formatNumber(webVisitsHigh)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Sales</p>
-                <p className="text-2xl">{Math.round(sales).toLocaleString()} - {Math.round(salesHigh).toLocaleString()}</p>
+                <p className="text-2xl">{formatNumber(sales)} - {formatNumber(salesHigh)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">CAC</p>
-                <p className="text-2xl">${cac.toFixed(2)} - ${cacHigh.toFixed(2)}</p>
+                <p className="text-2xl">${Math.round(cac)} - ${Math.round(cacHigh)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">ROAS</p>
