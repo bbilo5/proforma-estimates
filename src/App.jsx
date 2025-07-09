@@ -4,7 +4,6 @@ export default function App() {
   const [budget, setBudget] = useState(50000);
   const [option, setOption] = useState("1");
 
-  // Constants for Option 1
   const values = {
     1: {
       cpm: 15,
@@ -27,11 +26,17 @@ export default function App() {
   const selected = values[option];
 
   const impressions = budget * selected.impressionsFactor;
+  const impressionsHigh = budget * values[2].impressionsFactor;
   const households = impressions * selected.householdsFactor;
+  const householdsHigh = impressionsHigh * values[2].householdsFactor;
   const webVisits = impressions * selected.webVisitsFactor;
+  const webVisitsHigh = impressionsHigh * values[2].webVisitsFactor;
   const sales = webVisits * selected.salesFactor;
+  const salesHigh = webVisitsHigh * values[2].salesFactor;
   const cac = budget / sales;
+  const cacHigh = budget / salesHigh;
   const roas = (sales * 100) / budget;
+  const roasHigh = (salesHigh * 100) / budget;
 
   return (
     <div className="min-h-screen font-[baikal] bg-white">
@@ -39,7 +44,7 @@ export default function App() {
       <div className="bg-[#e50C00] text-white flex flex-col justify-center items-center pt-32 pb-20 px-4">
         <img src="/Edge Logo_1 line_White.png" alt="Havas Edge Logo" className="max-w-xs mb-10" />
         <h1 className="text-4xl font-medium text-center">Positive Proforma Estimates</h1>
-        <p className="text-md text-white mt-2 mb-10">Simulate your campaign results instantly.</p>
+        <p className="text-md text-white mt-2 mb-14">Simulate your campaign results instantly.</p>
       </div>
 
       {/* Bottom Section - Inputs and Outputs */}
@@ -49,7 +54,7 @@ export default function App() {
           <div className="bg-white shadow-md rounded-xl p-6">
             <h2 className="text-xl font-bold text-center mb-6">Inputs</h2>
             <div className="mb-6">
-              <label className="block text-sm font-medium">Budget</label>
+              <label className="block text-sm font-medium">Budget (6 Weeks)</label>
               <input
                 type="range"
                 min="10000"
@@ -80,35 +85,35 @@ export default function App() {
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">CPM</p>
-                <p className="text-2xl">${selected.cpm.toFixed(2)}</p>
+                <p className="text-2xl">${values[1].cpm.toFixed(2)} - ${values[2].cpm.toFixed(2)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Cost per View</p>
-                <p className="text-2xl">${selected.cpv.toFixed(2)}</p>
+                <p className="text-2xl">${values[1].cpv.toFixed(2)} - ${values[2].cpv.toFixed(2)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Impressions</p>
-                <p className="text-2xl">{Math.round(impressions).toLocaleString()}</p>
+                <p className="text-2xl">{Math.round(impressions).toLocaleString()} - {Math.round(impressionsHigh).toLocaleString()}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Households</p>
-                <p className="text-2xl">{Math.round(households).toLocaleString()}</p>
+                <p className="text-2xl">{Math.round(households).toLocaleString()} - {Math.round(householdsHigh).toLocaleString()}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Web Visits</p>
-                <p className="text-2xl">{Math.round(webVisits).toLocaleString()}</p>
+                <p className="text-2xl">{Math.round(webVisits).toLocaleString()} - {Math.round(webVisitsHigh).toLocaleString()}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Sales</p>
-                <p className="text-2xl">{Math.round(sales).toLocaleString()}</p>
+                <p className="text-2xl">{Math.round(sales).toLocaleString()} - {Math.round(salesHigh).toLocaleString()}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">CAC</p>
-                <p className="text-2xl">${cac.toFixed(2)}</p>
+                <p className="text-2xl">${cac.toFixed(2)} - ${cacHigh.toFixed(2)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">ROAS</p>
-                <p className="text-2xl">{roas.toFixed(1)}</p>
+                <p className="text-2xl">{roas.toFixed(1)} - {roasHigh.toFixed(1)}</p>
               </div>
             </div>
           </div>
