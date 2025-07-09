@@ -2,20 +2,20 @@ import { useState } from "react";
 
 export default function App() {
   const [budget, setBudget] = useState(50000);
-  const [option, setOption] = useState("1");
+  const [channel, setChannel] = useState("Linear TV");
 
   const values = {
-    1: {
+    "Linear TV": {
       cpm: 15,
-      cpv: 0.01,
-      impressionsFactor: 28,
-      householdsFactor: 0.1986,
-      webVisitsFactor: 0.00685,
-      salesFactor: 0.0854,
-    },
-    2: {
-      cpm: 35,
       cpv: 0.04,
+      impressionsFactor: 66,
+      householdsFactor: 0.3333,
+      webVisitsFactor: 0.01485,
+      salesFactor: 0.0429,
+    },
+    "CTV": {
+      cpm: 5,
+      cpv: 0.01,
       impressionsFactor: 66,
       householdsFactor: 0.3333,
       webVisitsFactor: 0.01485,
@@ -23,16 +23,16 @@ export default function App() {
     },
   };
 
-  const selected = values[option];
+  const selected = values[channel];
 
   const impressions = budget * selected.impressionsFactor;
-  const impressionsHigh = budget * values[2].impressionsFactor;
+  const impressionsHigh = budget * values["Linear TV"].impressionsFactor;
   const households = impressions * selected.householdsFactor;
-  const householdsHigh = impressionsHigh * values[2].householdsFactor;
+  const householdsHigh = impressionsHigh * values["Linear TV"].householdsFactor;
   const webVisits = impressions * selected.webVisitsFactor;
-  const webVisitsHigh = impressionsHigh * values[2].webVisitsFactor;
+  const webVisitsHigh = impressionsHigh * values["Linear TV"].webVisitsFactor;
   const sales = webVisits * selected.salesFactor;
-  const salesHigh = webVisitsHigh * values[2].salesFactor;
+  const salesHigh = webVisitsHigh * values["Linear TV"].salesFactor;
   const cac = budget / sales;
   const cacHigh = budget / salesHigh;
   const roas = (sales * 100) / budget;
@@ -76,11 +76,11 @@ export default function App() {
               <label className="block text-sm font-medium mb-1">Channel</label>
               <select
                 className="w-full border p-2 rounded"
-                value={option}
-                onChange={(e) => setOption(e.target.value)}
+                value={channel}
+                onChange={(e) => setChannel(e.target.value)}
               >
-                <option value="1">Linear TV</option>
-                <option value="2">CTV</option>
+                <option value="Linear TV">Linear TV</option>
+                <option value="CTV">CTV</option>
               </select>
             </div>
           </div>
@@ -91,11 +91,11 @@ export default function App() {
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">CPM</p>
-                <p className="text-2xl">${Math.round(values[1].cpm)} - ${Math.round(values[2].cpm)}</p>
+                <p className="text-2xl">${Math.round(values["CTV"].cpm)} - ${Math.round(values["Linear TV"].cpm)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Cost per View</p>
-                <p className="text-2xl">${values[1].cpv.toFixed(2)} - ${values[2].cpv.toFixed(2)}</p>
+                <p className="text-2xl">${values["CTV"].cpv.toFixed(2)} - ${values["Linear TV"].cpv.toFixed(2)}</p>
               </div>
               <div>
                 <p className="text-sm text-[#e50C00] uppercase font-medium">Impressions</p>
