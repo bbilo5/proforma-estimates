@@ -73,14 +73,14 @@ export default function App() {
               <div className="text-sm text-gray-700 mt-1">${budget.toLocaleString()}</div>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Scenario</label>
+              <label className="block text-sm font-medium mb-1">Channel</label>
               <select
                 className="w-full border p-2 rounded"
                 value={option}
                 onChange={(e) => setOption(e.target.value)}
               >
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
+                <option value="1">Linear TV</option>
+                <option value="2">CTV</option>
               </select>
             </div>
           </div>
