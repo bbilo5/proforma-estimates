@@ -2,63 +2,121 @@ import { useState } from "react";
 
 export default function App() {
   const [budget, setBudget] = useState(50000);
-  const [option, setOption] = useState("Option 1");
+  const [option, setOption] = useState("1");
+
+  // Constants for Option 1
+  const values = {
+    1: {
+      cpm: 15,
+      cpv: 0.01,
+      impressionsFactor: 28,
+      householdsFactor: 0.1986,
+      webVisitsFactor: 0.00685,
+      salesFactor: 0.0854,
+    },
+    2: {
+      cpm: 35,
+      cpv: 0.04,
+      impressionsFactor: 66,
+      householdsFactor: 0.3333,
+      webVisitsFactor: 0.01485,
+      salesFactor: 0.0429,
+    },
+  };
+
+  const selected = values[option];
+
+  const impressions = budget * selected.impressionsFactor;
+  const households = impressions * selected.householdsFactor;
+  const webVisits = impressions * selected.webVisitsFactor;
+  const sales = webVisits * selected.salesFactor;
+  const cac = budget / sales;
+  const roas = (sales * 100) / budget;
 
   return (
-    <div className="min-h-screen font-sans bg-white">
-      <div className="bg-[#e50C00] text-white text-center py-20 px-4">
-        <h1 className="text-4xl font-bold mb-2">Proforma Estimates</h1>
-        <p className="text-md">Simulate your campaign results instantly.</p>
+    <div className="min-h-screen font-[baikal] bg-white">
+      {/* Top Section - Red with Logo and Title */}
+      <div className="bg-[#e50C00] text-white flex flex-col justify-center items-center pt-32 pb-20 px-4">
+        <img src="/Edge Logo_1 line_White.png" alt="Havas Edge Logo" className="max-w-xs mb-10" />
+        <h1 className="text-4xl font-medium text-center">Positive Proforma Estimates</h1>
+        <p className="text-md text-white mt-2">Simulate your campaign results instantly.</p>
       </div>
 
-      <div className="max-w-5xl mx-auto -mt-16 px-4 pb-16 grid md:grid-cols-2 gap-10 relative z-10">
-        <div className="bg-white rounded-xl shadow-md p-6">
-          <div className="mb-6">
-            <label className="block text-sm font-medium mb-1">Budget (6 Weeks)</label>
-            <input
-              type="range"
-              min="20000"
-              max="1000000"
-              step="5000"
-              className="w-full accent-[#e50C00]"
-              value={budget}
-              onChange={(e) => setBudget(Number(e.target.value))}
-            />
-            <div className="text-sm mt-2">${budget.toLocaleString()}</div>
+      {/* Bottom Section - Inputs and Outputs */}
+      <div className="relative -mt-20 z-10 pb-20">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6">
+          {/* Input Box */}
+          <div className="bg-white shadow-md rounded-xl p-6">
+            <div className="mb-6">
+              <label className="block text-sm font-medium">Budget</label>
+              <input
+                type="range"
+                min="10000"
+                max="1000000"
+                step="5000"
+                className="w-full mt-1 accent-[#e50C00]"
+                value={budget}
+                onChange={(e) => setBudget(Number(e.target.value))}
+              />
+              <div className="text-sm text-gray-700 mt-1">${budget.toLocaleString()}</div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Scenario</label>
+              <select
+                className="w-full border p-2 rounded"
+                value={option}
+                onChange={(e) => setOption(e.target.value)}
+              >
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+              </select>
+            </div>
           </div>
 
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Scenario</label>
-            <select
-              value={option}
-              onChange={(e) => setOption(e.target.value)}
-              className="w-full border border-gray-300 rounded px-3 py-2"
-            >
-              <option>Option 1</option>
-              <option>Option 2</option>
-            </select>
+          {/* Output Box */}
+          <div className="bg-white shadow-md rounded-xl p-6">
+            <h2 className="text-xl font-bold text-center mb-6">Estimated Results</h2>
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <p className="text-sm text-[#e50C00] uppercase font-medium">Impressions</p>
+                <p className="text-2xl">{Math.round(impressions).toLocaleString()}</p>
+              </div>
+              <div>
+                <p className="text-sm text-[#e50C00] uppercase font-medium">Households</p>
+                <p className="text-2xl">{Math.round(households).toLocaleString()}</p>
+              </div>
+              <div>
+                <p className="text-sm text-[#e50C00] uppercase font-medium">Web Visits</p>
+                <p className="text-2xl">{Math.round(webVisits).toLocaleString()}</p>
+              </div>
+              <div>
+                <p className="text-sm text-[#e50C00] uppercase font-medium">Sales</p>
+                <p className="text-2xl">{Math.round(sales).toLocaleString()}</p>
+              </div>
+              <div>
+                <p className="text-sm text-[#e50C00] uppercase font-medium">CAC</p>
+                <p className="text-2xl">${cac.toFixed(2)}</p>
+              </div>
+              <div>
+                <p className="text-sm text-[#e50C00] uppercase font-medium">ROAS</p>
+                <p className="text-2xl">{roas.toFixed(1)}</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-md p-6">
-          <h2 className="text-xl font-bold text-center mb-6">Estimated Results</h2>
-          <div className="grid grid-cols-2 gap-6">
-            <div>
-              <p className="text-sm text-[#e50C00] uppercase font-medium">Metric A</p>
-              <p className="text-3xl text-black font-normal">123,456</p>
-            </div>
-            <div>
-              <p className="text-sm text-[#e50C00] uppercase font-medium">Metric B</p>
-              <p className="text-3xl text-black font-normal">78,910</p>
-            </div>
-            <div>
-              <p className="text-sm text-[#e50C00] uppercase font-medium">Metric C</p>
-              <p className="text-3xl text-black font-normal">11,121</p>
-            </div>
-            <div>
-              <p className="text-sm text-[#e50C00] uppercase font-medium">Metric D</p>
-              <p className="text-3xl text-black font-normal">13.37</p>
-            </div>
+        {/* Call-to-action Box */}
+        <div className="max-w-3xl mx-auto mt-8 px-6">
+          <div className="bg-gray-100 rounded-xl shadow-md p-6 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-md text-black mb-4 md:mb-0">Want to see how this plays out for your brand?</p>
+            <a
+              href="https://www.havasedge.com/contact/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#e50C00] hover:bg-red-700 text-white font-medium py-2 px-6 rounded-lg transition"
+            >
+              Book a demo
+            </a>
           </div>
         </div>
       </div>
