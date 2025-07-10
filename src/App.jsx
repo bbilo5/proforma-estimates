@@ -4,14 +4,14 @@ const logo = "/Edge Logo_1 line_White.png";
 
 export default function App() {
   // Calculator 1 state
-  const [budget1, setBudget1] = useState(0);
+  const [budget1, setBudget1] = useState(50000);
   const [channel, setChannel] = useState("Linear TV");
 
   // Calculator 2 state
-  const [budget2, setBudget2] = useState(0);
-  const [cpm2, setCpm2] = useState(0);
-  const [cr1_2, setCr1_2] = useState(0);
-  const [cr2_2, setCr2_2] = useState(0);
+  const [budget2, setBudget2] = useState(50000);
+  const [cpm2, setCpm2] = useState(15);
+  const [cr1_2, setCr1_2] = useState(1.9);
+  const [cr2_2, setCr2_2] = useState(0.8);
 
   const AOV = 100;
 
@@ -48,18 +48,24 @@ export default function App() {
   };
 
   const formatDollar = (num) => "$" + Math.round(num).toLocaleString();
+  const formatROAS = (num) => num.toFixed(1);
   const cpmRange = channel === "CTV" ? "$5-$15" : "$15-$35";
   const cpvRange = channel === "CTV" ? "$0.01-$0.02" : "$0.01-$0.04";
 
   const renderOutputBox = (outputs) => (
     <div className="bg-white shadow-md rounded-xl p-6">
-      <h2 className="text-xl font-semibold text-center mb-6">Estimated Results</h2>
+      <h2 className="text-xl font-semibold text-center mb-4">Estimates</h2>
+      <h3 className="text-md font-semibold text-center mb-6">Estimated Results</h3>
       <div className="grid grid-cols-2 gap-6 text-black text-lg">
-        {outputs.map(([label, low, high, isDollar]) => (
+        {outputs.map(([label, low, high, isDollar, isROAS]) => (
           <div key={label}>
             <p className="text-sm text-[#e50C00] uppercase font-medium">{label}</p>
             <p className="text-2xl font-medium">
-              {isDollar ? formatDollar(high) : formatNumber(high)} - {isDollar ? formatDollar(low) : formatNumber(low)}
+              {label === "CAC"
+                ? `${isDollar ? formatDollar(high) : formatNumber(high)} - ${isDollar ? formatDollar(low) : formatNumber(low)}`
+                : isROAS
+                ? `${formatROAS(low)} - ${formatROAS(high)}`
+                : `${isDollar ? formatDollar(low) : formatNumber(low)} - ${isDollar ? formatDollar(high) : formatNumber(high)}`}
             </p>
           </div>
         ))}
@@ -69,16 +75,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-[baikal] bg-[#e50C00] text-white">
-      {/* Header */}
       <div className="flex flex-col items-center py-10">
-        <img src={logo} alt="Logo" className="w-64 mb-4" />
+        <img src={logo} alt="Logo" className="w-64 mb-2" />
         <h1 className="text-3xl font-medium">Positive Proforma Estimates</h1>
       </div>
 
-      {/* Calculator 1 */}
       <div className="text-center text-white text-xl font-light mb-4">Calculator 1</div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 pb-12">
-        {/* Input Box */}
         <div className="bg-white text-black shadow-md rounded-xl p-6">
           <h3 className="font-bold text-lg mb-4">Inputs</h3>
           <label className="block text-sm font-medium">Budget (6 Weeks)</label>
@@ -92,7 +95,6 @@ export default function App() {
           </select>
         </div>
 
-        {/* Output Box */}
         {renderOutputBox([
           ["CPM", 5, 15, true],
           ["Cost Per View", 0.01, 0.02, true],
@@ -101,14 +103,12 @@ export default function App() {
           ["Web Visits", visitsLow, visitsHigh],
           ["Sales", salesLow, salesHigh],
           ["CAC", cacHigh, cacLow, true],
-          ["ROAS", roasLow, roasHigh]
+          ["ROAS", roasLow, roasHigh, false, true]
         ])}
       </div>
 
-      {/* Calculator 2 */}
       <div className="text-center text-white text-xl font-light mb-4">Calculator 2</div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 pb-20">
-        {/* Input Box */}
         <div className="bg-white text-black shadow-md rounded-xl p-6">
           <h3 className="font-bold text-lg mb-4">Inputs</h3>
           <label className="block text-sm font-medium">Budget (6 Weeks)</label>
@@ -116,8 +116,8 @@ export default function App() {
           <div className="text-sm text-gray-700 mt-1">${budget2.toLocaleString()}</div>
 
           <label className="block text-sm font-medium mt-4">Blended CPM</label>
-          <input type="range" min="2" max="50" step="0.5" value={cpm2} onChange={(e) => setCpm2(Number(e.target.value))} className="w-full mt-1 accent-[#e50C00]" />
-          <div className="text-sm text-gray-700 mt-1">${cpm2.toFixed(2)}</div>
+          <input type="range" min="2" max="50" step="1" value={cpm2} onChange={(e) => setCpm2(Number(e.target.value))} className="w-full mt-1 accent-[#e50C00]" />
+          <div className="text-sm text-gray-700 mt-1">${cpm2.toFixed(0)}</div>
 
           <div className="flex space-x-4 mt-4">
             <div className="w-1/2">
@@ -133,14 +133,13 @@ export default function App() {
           </div>
         </div>
 
-        {/* Output Box */}
         {renderOutputBox([
           ["Impressions", impressions2Low, impressions2High],
           ["Households", households2Low, households2High],
           ["Web Visits", visits2Low, visits2High],
           ["Sales", sales2Low, sales2High],
           ["CAC", cac2High, cac2Low, true],
-          ["ROAS", roas2Low, roas2High]
+          ["ROAS", roas2Low, roas2High, false, true]
         ])}
       </div>
     </div>
