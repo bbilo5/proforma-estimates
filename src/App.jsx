@@ -21,8 +21,8 @@ export default function App() {
   const householdsHigh = impressions1High * 0.275;
   const visitsLow = impressions1Low * 0.00685;
   const visitsHigh = impressions1High * 0.01485;
-  const salesLow = visitsLow * 0.0429;
-  const salesHigh = visitsHigh * 0.0854;
+  const salesLow = visitsLow * 0.0075;
+  const salesHigh = visitsHigh * 0.009;
   const cacLow = budget1 / salesHigh || 0;
   const cacHigh = budget1 / salesLow || 0;
   const roasLow = (salesLow * AOV) / budget1 || 0;
@@ -75,7 +75,7 @@ export default function App() {
     <div className="min-h-screen font-[baikal] bg-[#e50C00] text-white">
       <div className="flex flex-col items-center py-10">
         <img src={logo} alt="Logo" className="w-64 mb-2" />
-        <h1 className="text-3xl font-normal">Positive Proforma Estimates</h1>
+        <h1 className="text-3xl font-normal">Proforma Estimates</h1>
       </div>
 
       <div className="text-center text-white text-xl font-light mb-4">Calculator 1</div>
