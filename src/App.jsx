@@ -21,8 +21,8 @@ export default function App() {
   const householdsHigh = impressions1High * 0.275;
   const visitsLow = impressions1Low * 0.00685;
   const visitsHigh = impressions1High * 0.01485;
-  const salesLow = visitsLow * 0.0854;
-  const salesHigh = visitsHigh * 0.0429;
+  const salesLow = visitsLow * 0.0429;
+  const salesHigh = visitsHigh * 0.0854;
   const cacLow = budget1 / salesHigh || 0;
   const cacHigh = budget1 / salesLow || 0;
   const roasLow = (salesLow * AOV) / budget1 || 0;
@@ -49,7 +49,6 @@ export default function App() {
 
   const formatDollar = (num) => "$" + Math.round(num).toLocaleString();
   const formatROAS = (num) => num.toFixed(1);
-  const cpmRange = channel === "CTV" ? "$5-$15" : "$15-$35";
 
   const renderOutputBox = (outputs) => (
     <div className="bg-white shadow-md rounded-xl p-6">
@@ -78,7 +77,7 @@ export default function App() {
         <h1 className="text-3xl font-normal">Positive Proforma Estimates</h1>
       </div>
 
-      <div className="text-center text-white text-xl font-light mb-4">Calculator 1</div>
+      <div className="text-center text-white text-xl font-light mb-4">Basic</div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 pb-12">
         <div className="bg-white text-black shadow-md rounded-xl p-6">
           <h3 className="text-xl font-normal mb-4">Inputs</h3>
@@ -104,7 +103,7 @@ export default function App() {
         ])}
       </div>
 
-      <div className="text-center text-white text-xl font-light mb-4">Calculator 2</div>
+      <div className="text-center text-white text-xl font-light mb-4">Advanced</div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 pb-20">
         <div className="bg-white text-black shadow-md rounded-xl p-6">
           <h3 className="text-xl font-normal mb-4">Inputs</h3>
