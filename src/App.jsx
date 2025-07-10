@@ -27,16 +27,16 @@ export default function App() {
   return (
     <div className="min-h-screen font-[baikal] bg-[#e50C00]">
       {/* Top Section - Red with Logo and Title */}
-      <div className="text-white flex flex-col justify-center items-center pt-16 pb-10 px-4">
-        <img src={logo} alt="Havas Edge Logo" className="max-w-xs mb-8" />
+      <div className="text-white flex flex-col justify-center items-center pt-10 pb-6 px-4">
+        <img src={logo} alt="Havas Edge Logo" className="max-w-xs mb-4" />
         <h1 className="text-4xl font-medium text-center">Positive Proforma Estimates</h1>
       </div>
 
       {/* Calculator 1 Header */}
-      <h2 className="text-2xl text-white text-center font-semibold mt-10 mb-4">Calculator 1</h2>
+      <h2 className="text-2xl text-white text-center font-semibold mt-6 mb-4">Calculator 1</h2>
 
       {/* Calculator 1 */}
-      <div className="relative z-10 pb-20">
+      <div className="relative z-10 pb-10">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6">
           {/* Input Box */}
           <div className="bg-white shadow-md rounded-xl p-6">
@@ -119,7 +119,7 @@ export default function App() {
       </div>
 
       {/* Calculator 2 Header */}
-      <h2 className="text-2xl text-white text-center font-semibold mt-10 mb-4">Calculator 2</h2>
+      <h2 className="text-2xl text-white text-center font-semibold mt-6 mb-4">Calculator 2</h2>
 
       {/* Calculator 2 */}
       <div className="relative z-10 pb-20">
