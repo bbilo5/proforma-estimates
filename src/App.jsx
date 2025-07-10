@@ -98,7 +98,7 @@ export default function App() {
     <div className="min-h-screen font-[baikal] bg-[#e50C00] text-white">
       <div className="flex flex-col items-center py-10">
         <img src={logo} alt="Logo" className="w-64 mb-2" />
-        <h1 className="text-3xl font-normal">Positive Proforma Estimates</h1>
+        <h1 className="text-3xl font-normal">Proforma Estimates</h1>
       </div>
 
       <div className="text-center text-white text-xl font-light mb-4">Basic</div>
