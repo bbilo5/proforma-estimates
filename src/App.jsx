@@ -71,7 +71,7 @@ export default function App() {
   const formatDollar = (num) => "$" + Math.round(num).toLocaleString();
   const formatROAS = (num) => num.toFixed(1);
 
-  const renderOutputBox = (outputs) => (
+  const renderOutputBox = (outputs, showNote = false) => (
     <div className="bg-white shadow-md rounded-xl p-6">
       <h3 className="text-xl text-black mb-4 font-normal">Estimates</h3>
       <div className="grid grid-cols-2 gap-6 text-black text-lg">
@@ -87,7 +87,9 @@ export default function App() {
             </p>
           </div>
         ))}
-        <div className="col-span-1 text-right text-xs text-gray-500 pt-8">*CPMs are estimate based on P2+ audiences</div>
+        {showNote && (
+          <div className="col-span-2 text-left text-xs text-gray-500">*CPMs are estimate based on P2+ audiences</div>
+        )}
       </div>
     </div>
   );
@@ -123,7 +125,7 @@ export default function App() {
           ["Sales", salesLow, salesHigh],
           ["CAC", cacLow, cacHigh, true],
           ["ROAS", roasLow, roasHigh, false, true]
-        ])}
+        ], true)}
       </div>
 
       <div className="text-center text-white text-xl font-light mb-4">Advanced</div>
