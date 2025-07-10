@@ -57,7 +57,7 @@ export default function App() {
         <h1 className="text-4xl font-medium text-center">Positive Proforma Estimates</h1>
       </div>
 
-      <h2 className="text-2xl text-white text-center font-semibold mt-4 mb-4">Calculator 1</h2>
+      <h2 className="text-2xl text-white text-center font-normal mt-4 mb-4">Calculator 1</h2>
       <div className="relative z-10 pb-10">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6">
           <div className="bg-white shadow-md rounded-xl p-6">
@@ -85,14 +85,14 @@ export default function App() {
               <div><p className="text-sm text-[#e50C00] uppercase font-medium">Households</p><p className="text-3xl font-normal text-black">{formatNumber(householdsLow)} - {formatNumber(householdsHigh)}</p></div>
               <div><p className="text-sm text-[#e50C00] uppercase font-medium">Web Visits</p><p className="text-3xl font-normal text-black">{formatNumber(visitsLow)} - {formatNumber(visitsHigh)}</p></div>
               <div><p className="text-sm text-[#e50C00] uppercase font-medium">Sales</p><p className="text-3xl font-normal text-black">{formatNumber(salesLow)} - {formatNumber(salesHigh)}</p></div>
-              <div><p className="text-sm text-[#e50C00] uppercase font-medium">CAC</p><p className="text-3xl font-normal text-black">{formatDollar(cacLow)} - {formatDollar(cacHigh)}</p></div>
+              <div><p className="text-sm text-[#e50C00] uppercase font-medium">CAC</p><p className="text-3xl font-normal text-black">{formatDollar(cacHigh)} - {formatDollar(cacLow)}</p></div>
               <div><p className="text-sm text-[#e50C00] uppercase font-medium">ROAS</p><p className="text-3xl font-normal text-black">{roasLow.toFixed(2)} - {roasHigh.toFixed(2)}</p></div>
             </div>
           </div>
         </div>
       </div>
 
-      <h2 className="text-2xl text-white text-center font-semibold mt-6 mb-4">Calculator 2</h2>
+      <h2 className="text-2xl text-white text-center font-normal mt-6 mb-4">Calculator 2</h2>
       <div className="relative z-10 pb-20">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6">
           <div className="bg-white shadow-md rounded-xl p-6">
