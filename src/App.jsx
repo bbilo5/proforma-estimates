@@ -56,11 +56,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen font-[baikal] bg-white">
-      <div className="bg-[#e50C00] text-white flex flex-col justify-center items-center pt-32 pb-20 px-4">
+    <div className="min-h-screen font-[baikal] bg-[#e50C00]">
+      <div className="text-white flex flex-col justify-center items-center pt-32 pb-20 px-4">
         <img src={logo} alt="Havas Edge Logo" className="max-w-xs mb-10" />
         <h1 className="text-4xl font-medium text-center">Positive Proforma Estimates</h1>
-        <p className="text-md text-white mt-2 mb-14">Simulate your campaign results instantly.</p>
       </div>
 
       <div className="relative -mt-20 z-10 pb-20">
@@ -132,9 +131,9 @@ export default function App() {
           </div>
         </div>
 
-        {/* Second Calculator */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 px-6 mt-20">
           <div className="bg-white shadow-md rounded-xl p-6">
+            <h2 className="text-xl font-bold text-center mb-6">Inputs</h2>
             <div className="mb-4">
               <label className="block text-sm font-medium">Budget (6 Weeks)</label>
               <input
@@ -207,21 +206,6 @@ export default function App() {
                 <p className="text-3xl font-normal text-black">{roasAlt.toFixed(2)}</p>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* CTA Box */}
-        <div className="max-w-3xl mx-auto mt-16 px-6">
-          <div className="bg-gray-100 rounded-xl shadow-md p-6 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-md text-black mb-4 md:mb-0">Want to see how this plays out for your brand?</p>
-            <a
-              href="https://www.havasedge.com/contact/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#e50C00] hover:bg-red-700 text-white font-medium py-2 px-6 rounded-lg transition"
-            >
-              Book a demo
-            </a>
           </div>
         </div>
       </div>
