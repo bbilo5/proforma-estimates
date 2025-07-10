@@ -44,11 +44,11 @@ export default function App() {
   const formatNumber = (num) => {
     if (num >= 1000000) {
       const val = num / 1000000;
-      return val % 1 === 0 ? `${val.toFixed(0)}M` : `${val.toFixed(1)}M`;
+      return Number.isInteger(val) ? `${val.toFixed(0)}M` : `${val.toFixed(1)}M`;
     }
     if (num >= 1000) {
       const val = num / 1000;
-      return val % 1 === 0 ? `${val.toFixed(0)}K` : `${val.toFixed(1)}K`;
+      return Number.isInteger(val) ? `${val.toFixed(0)}K` : `${val.toFixed(1)}K`;
     }
     return Math.round(num).toLocaleString();
   };
