@@ -86,7 +86,7 @@ export default function App() {
                 : `${isDollar ? formatDollar(low) : formatNumber(low)} - ${isDollar ? formatDollar(high) : formatNumber(high)}`}
             </p>
             {label === "CPM" && showNote && (
-              <p className="text-xs text-gray-500 mt-1">*CPMs are estimate based on P2+ audiences</p>
+              <p className="text-xs text-gray-500 mt-1">*CPMs are an estimate based on P2+ audiences</p>
             )}
           </div>
         ))}
