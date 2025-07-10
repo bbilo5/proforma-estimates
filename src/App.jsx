@@ -15,9 +15,9 @@ export default function App() {
 
   const AOV = 100;
 
-  // Calculator 1 calculations
-  const impressions1Low = channel === "CTV" ? (budget1 / 15) * 1000 : (budget1 / 35) * 1000;
-  const impressions1High = channel === "CTV" ? (budget1 / 5) * 1000 : (budget1 / 15) * 1000;
+  // Calculator 1 calculations (fixed)
+  const impressions1Low = budget1 * 28;
+  const impressions1High = budget1 * 66;
 
   const householdsLow = impressions1Low * 0.1986;
   const householdsHigh = impressions1High * 0.3333;
@@ -25,8 +25,8 @@ export default function App() {
   const visitsLow = impressions1Low * 0.00685;
   const visitsHigh = impressions1High * 0.01485;
 
-  const salesLow = impressions1Low * 0.00854;
-  const salesHigh = impressions1High * 0.0429;
+  const salesLow = visitsLow * 0.0854;
+  const salesHigh = visitsHigh * 0.0429;
 
   const cacLow = budget1 / salesHigh || 0;
   const cacHigh = budget1 / salesLow || 0;
