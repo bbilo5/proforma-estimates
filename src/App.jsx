@@ -15,8 +15,23 @@ export default function App() {
 
   const AOV = 100;
 
-  const impressions1Low = ((budget1 / 15) * 1000) * 0.925;
-  const impressions1High = ((budget1 / 5) * 1000) * 1.075;
+  const getCPMRange = (channel) => {
+    switch (channel) {
+      case "Linear TV":
+        return [2, 4];
+      case "CTV":
+        return [14, 17];
+      case "Paid Social":
+        return [5, 10];
+      default:
+        return [5, 15];
+    }
+  };
+
+  const [cpmLow1, cpmHigh1] = getCPMRange(channel);
+
+  const impressions1Low = ((budget1 / cpmHigh1) * 1000) * 0.925;
+  const impressions1High = ((budget1 / cpmLow1) * 1000) * 1.075;
   const householdsLow = impressions1Low * 0.175;
   const householdsHigh = impressions1High * 0.275;
   const visitsLow = impressions1Low * 0.00685;
@@ -100,7 +115,7 @@ export default function App() {
         </div>
 
         {renderOutputBox([
-          ["CPM", 5, 15, true],
+          ["CPM", cpmLow1, cpmHigh1, true],
           ["Impressions", impressions1Low, impressions1High],
           ["Households", householdsLow, householdsHigh],
           ["Web Visits", visitsLow, visitsHigh],
