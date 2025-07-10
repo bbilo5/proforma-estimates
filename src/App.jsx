@@ -95,6 +95,7 @@ export default function App() {
           <select className="w-full p-2 mt-1 border rounded" value={channel} onChange={(e) => setChannel(e.target.value)}>
             <option>Linear TV</option>
             <option>CTV</option>
+            <option>Paid Social</option>
           </select>
         </div>
 
