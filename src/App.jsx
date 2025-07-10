@@ -15,8 +15,8 @@ export default function App() {
 
   const AOV = 100;
 
-  const impressions1Low = ((budget1 / 35) * 1000) * 0.925;
-  const impressions1High = ((budget1 / 15) * 1000) * 1.075;
+  const impressions1Low = ((budget1 / 15) * 1000) * 0.925;
+  const impressions1High = ((budget1 / 5) * 1000) * 1.075;
   const householdsLow = impressions1Low * 0.175;
   const householdsHigh = impressions1High * 0.275;
   const visitsLow = impressions1Low * 0.00685;
@@ -53,7 +53,7 @@ export default function App() {
 
   const renderOutputBox = (outputs) => (
     <div className="bg-white shadow-md rounded-xl p-6">
-      <h3 className="text-lg text-black mb-4 font-normal">Estimates</h3>
+      <h3 className="text-xl text-black mb-4 font-normal">Estimates</h3>
       <div className="grid grid-cols-2 gap-6 text-black text-lg">
         {outputs.map(([label, low, high, isDollar, isROAS]) => (
           <div key={label} className={label === "CPM" ? "col-span-2 text-center" : ""}>
@@ -81,7 +81,7 @@ export default function App() {
       <div className="text-center text-white text-xl font-light mb-4">Calculator 1</div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 pb-12">
         <div className="bg-white text-black shadow-md rounded-xl p-6">
-          <h3 className="text-lg font-normal mb-4">Inputs</h3>
+          <h3 className="text-xl font-normal mb-4">Inputs</h3>
           <label className="block text-sm font-medium">Budget (6 Weeks)</label>
           <input type="range" min="20000" max="1000000" step="5000" value={budget1} onChange={(e) => setBudget1(Number(e.target.value))} className="w-full mt-1 accent-[#e50C00]" />
           <div className="text-sm text-gray-700 mt-1">${budget1.toLocaleString()}</div>
@@ -107,7 +107,7 @@ export default function App() {
       <div className="text-center text-white text-xl font-light mb-4">Calculator 2</div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 pb-20">
         <div className="bg-white text-black shadow-md rounded-xl p-6">
-          <h3 className="text-lg font-normal mb-4">Inputs</h3>
+          <h3 className="text-xl font-normal mb-4">Inputs</h3>
           <label className="block text-sm font-medium">Budget (6 Weeks)</label>
           <input type="range" min="20000" max="1000000" step="5000" value={budget2} onChange={(e) => setBudget2(Number(e.target.value))} className="w-full mt-1 accent-[#e50C00]" />
           <div className="text-sm text-gray-700 mt-1">${budget2.toLocaleString()}</div>
