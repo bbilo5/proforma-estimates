@@ -50,14 +50,13 @@ export default function App() {
   const formatDollar = (num) => "$" + Math.round(num).toLocaleString();
   const formatROAS = (num) => num.toFixed(1);
   const cpmRange = channel === "CTV" ? "$5-$15" : "$15-$35";
-  const cpvRange = channel === "CTV" ? "$0.01-$0.02" : "$0.01-$0.04";
 
   const renderOutputBox = (outputs) => (
     <div className="bg-white shadow-md rounded-xl p-6">
-      <h3 className="text-base text-black mb-4 font-normal">Estimates</h3>
+      <h3 className="text-lg text-black mb-4 font-normal">Estimates</h3>
       <div className="grid grid-cols-2 gap-6 text-black text-lg">
         {outputs.map(([label, low, high, isDollar, isROAS]) => (
-          <div key={label}>
+          <div key={label} className={label === "CPM" ? "col-span-2 text-center" : ""}>
             <p className="text-sm text-[#e50C00] uppercase font-medium">{label}</p>
             <p className="text-2xl font-medium">
               {label === "CAC"
@@ -82,7 +81,7 @@ export default function App() {
       <div className="text-center text-white text-xl font-light mb-4">Calculator 1</div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 pb-12">
         <div className="bg-white text-black shadow-md rounded-xl p-6">
-          <h3 className="text-base font-normal mb-4">Inputs</h3>
+          <h3 className="text-lg font-normal mb-4">Inputs</h3>
           <label className="block text-sm font-medium">Budget (6 Weeks)</label>
           <input type="range" min="20000" max="1000000" step="5000" value={budget1} onChange={(e) => setBudget1(Number(e.target.value))} className="w-full mt-1 accent-[#e50C00]" />
           <div className="text-sm text-gray-700 mt-1">${budget1.toLocaleString()}</div>
@@ -96,7 +95,6 @@ export default function App() {
 
         {renderOutputBox([
           ["CPM", 5, 15, true],
-          ["Cost Per View", 0.01, 0.02, true],
           ["Impressions", impressions1Low, impressions1High],
           ["Households", householdsLow, householdsHigh],
           ["Web Visits", visitsLow, visitsHigh],
@@ -109,7 +107,7 @@ export default function App() {
       <div className="text-center text-white text-xl font-light mb-4">Calculator 2</div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 pb-20">
         <div className="bg-white text-black shadow-md rounded-xl p-6">
-          <h3 className="text-base font-normal mb-4">Inputs</h3>
+          <h3 className="text-lg font-normal mb-4">Inputs</h3>
           <label className="block text-sm font-medium">Budget (6 Weeks)</label>
           <input type="range" min="20000" max="1000000" step="5000" value={budget2} onChange={(e) => setBudget2(Number(e.target.value))} className="w-full mt-1 accent-[#e50C00]" />
           <div className="text-sm text-gray-700 mt-1">${budget2.toLocaleString()}</div>
