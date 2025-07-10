@@ -99,7 +99,7 @@ export default function App() {
           ["Households", householdsLow, householdsHigh],
           ["Web Visits", visitsLow, visitsHigh],
           ["Sales", salesLow, salesHigh],
-          ["CAC", cacHigh, cacLow, true],
+          ["CAC", cacLow, cacHigh, true],
           ["ROAS", roasLow, roasHigh, false, true]
         ])}
       </div>
@@ -135,7 +135,7 @@ export default function App() {
           ["Households", households2Low, households2High],
           ["Web Visits", visits2Low, visits2High],
           ["Sales", sales2Low, sales2High],
-          ["CAC", cac2High, cac2Low, true],
+          ["CAC", cac2Low, cac2High, true],
           ["ROAS", roas2Low, roas2High, false, true]
         ])}
       </div>
