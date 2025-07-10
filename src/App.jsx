@@ -21,8 +21,8 @@ export default function App() {
   const householdsHigh = impressions1High * 0.275;
   const visitsLow = impressions1Low * 0.00685;
   const visitsHigh = impressions1High * 0.01485;
-  const salesLow = visitsLow * 0.0854;
-  const salesHigh = visitsHigh * 0.0429;
+  const salesLow = visitsLow * 0.0429;
+  const salesHigh = visitsHigh * 0.0854;
   const cacLow = budget1 / salesHigh || 0;
   const cacHigh = budget1 / salesLow || 0;
   const roasLow = (salesLow * AOV) / budget1 || 0;
