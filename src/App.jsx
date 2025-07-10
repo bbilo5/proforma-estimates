@@ -76,10 +76,8 @@ export default function App() {
       <h3 className="text-xl text-black mb-4 font-normal">Estimates</h3>
       <div className="grid grid-cols-2 gap-6 text-black text-lg">
         {outputs.map(([label, low, high, isDollar, isROAS]) => (
-          <div key={label} className={label === "CPM" ? "col-span-1 text-left" : ""}>
-            <p className="text-sm text-[#e50C00] uppercase font-medium">
-              {label}
-            </p>
+          <div key={label} className={label === "CPM" ? "col-span-2 text-left" : ""}>
+            <p className="text-sm text-[#e50C00] uppercase font-medium">{label}</p>
             <p className="text-2xl font-medium">
               {label === "CAC"
                 ? `${isDollar ? formatDollar(high) : formatNumber(high)} - ${isDollar ? formatDollar(low) : formatNumber(low)}`
@@ -87,7 +85,7 @@ export default function App() {
                 ? `${formatROAS(low)} - ${formatROAS(high)}`
                 : `${isDollar ? formatDollar(low) : formatNumber(low)} - ${isDollar ? formatDollar(high) : formatNumber(high)}`}
             </p>
-            {label === "Impressions" && showNote && (
+            {label === "CPM" && showNote && (
               <p className="text-xs text-gray-500 mt-1">*CPMs are estimate based on P2+ audiences</p>
             )}
           </div>
