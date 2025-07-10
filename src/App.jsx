@@ -54,7 +54,7 @@ export default function App() {
 
   const renderOutputBox = (outputs) => (
     <div className="bg-white shadow-md rounded-xl p-6">
-      <h2 className="text-xl font-semibold text-center mb-4">Estimates</h2>
+      <h2 className="text-xl font-semibold text-center mb-2">Estimates</h2>
       <h3 className="text-md font-semibold text-center mb-6">Estimated Results</h3>
       <div className="grid grid-cols-2 gap-6 text-black text-lg">
         {outputs.map(([label, low, high, isDollar, isROAS]) => (
@@ -77,7 +77,7 @@ export default function App() {
     <div className="min-h-screen font-[baikal] bg-[#e50C00] text-white">
       <div className="flex flex-col items-center py-10">
         <img src={logo} alt="Logo" className="w-64 mb-2" />
-        <h1 className="text-3xl font-medium">Positive Proforma Estimates</h1>
+        <h1 className="text-3xl font-normal">Positive Proforma Estimates</h1>
       </div>
 
       <div className="text-center text-white text-xl font-light mb-4">Calculator 1</div>
