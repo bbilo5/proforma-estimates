@@ -36,8 +36,8 @@ export default function App() {
   const householdsHigh = impressions1High * 0.275;
   const visitsLow = impressions1Low * 0.00685;
   const visitsHigh = impressions1High * 0.01485;
-  const salesLow = visitsLow * 0.0429;
-  const salesHigh = visitsHigh * 0.0854;
+  const salesLow = visitsLow * 0.0075;
+  const salesHigh = visitsHigh * 0.009;
   const cacLow = budget1 / salesHigh || 0;
   const cacHigh = budget1 / salesLow || 0;
   const roasLow = (salesLow * AOV) / budget1 || 0;
@@ -49,8 +49,8 @@ export default function App() {
   const households2High = impressions2High * 0.275;
   const visits2Low = impressions2Low * (cr1_2 / 100);
   const visits2High = impressions2High * (cr1_2 / 100);
-  const sales2Low = visits2Low * (cr2_2 / 100);
-  const sales2High = visits2High * (cr2_2 / 100);
+  const sales2Low = visits2Low * 0.0075;
+  const sales2High = visits2High * 0.009;
   const cac2Low = budget2 / sales2High || 0;
   const cac2High = budget2 / sales2Low || 0;
   const roas2Low = (sales2Low * AOV) / budget2 || 0;
