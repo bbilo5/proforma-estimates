@@ -21,8 +21,8 @@ export default function App() {
   const householdsHigh = impressions1High * 0.275;
   const visitsLow = impressions1Low * 0.00685;
   const visitsHigh = impressions1High * 0.01485;
-  const salesLow = visitsLow * 0.0429;
-  const salesHigh = visitsHigh * 0.0854;
+  const salesLow = visitsLow * 0.0854;
+  const salesHigh = visitsHigh * 0.0429;
   const cacLow = budget1 / salesHigh || 0;
   const cacHigh = budget1 / salesLow || 0;
   const roasLow = (salesLow * AOV) / budget1 || 0;
@@ -49,6 +49,7 @@ export default function App() {
 
   const formatDollar = (num) => "$" + Math.round(num).toLocaleString();
   const formatROAS = (num) => num.toFixed(1);
+  const cpmRange = channel === "CTV" ? "$5-$15" : "$15-$35";
 
   const renderOutputBox = (outputs) => (
     <div className="bg-white shadow-md rounded-xl p-6">
@@ -59,7 +60,7 @@ export default function App() {
             <p className="text-sm text-[#e50C00] uppercase font-medium">{label}</p>
             <p className="text-2xl font-medium">
               {label === "CAC"
-                ? `${isDollar ? formatDollar(low) : formatNumber(low)} - ${isDollar ? formatDollar(high) : formatNumber(high)}`
+                ? `${isDollar ? formatDollar(high) : formatNumber(high)} - ${isDollar ? formatDollar(low) : formatNumber(low)}`
                 : isROAS
                 ? `${formatROAS(low)} - ${formatROAS(high)}`
                 : `${isDollar ? formatDollar(low) : formatNumber(low)} - ${isDollar ? formatDollar(high) : formatNumber(high)}`}
@@ -98,7 +99,7 @@ export default function App() {
           ["Households", householdsLow, householdsHigh],
           ["Web Visits", visitsLow, visitsHigh],
           ["Sales", salesLow, salesHigh],
-          ["CAC", cacLow, cacHigh, true],
+          ["CAC", cacHigh, cacLow, true],
           ["ROAS", roasLow, roasHigh, false, true]
         ])}
       </div>
@@ -134,7 +135,7 @@ export default function App() {
           ["Households", households2Low, households2High],
           ["Web Visits", visits2Low, visits2High],
           ["Sales", sales2Low, sales2High],
-          ["CAC", cac2Low, cac2High, true],
+          ["CAC", cac2High, cac2Low, true],
           ["ROAS", roas2Low, roas2High, false, true]
         ])}
       </div>
