@@ -54,8 +54,7 @@ export default function App() {
 
   const renderOutputBox = (outputs) => (
     <div className="bg-white shadow-md rounded-xl p-6">
-      <h3 className="text-sm text-black mb-1">Estimates</h3>
-      <h4 className="text-xs text-gray-700 mb-6">Estimated Results</h4>
+      <h3 className="text-sm text-black mb-6">Estimates</h3>
       <div className="grid grid-cols-2 gap-6 text-black text-lg">
         {outputs.map(([label, low, high, isDollar, isROAS]) => (
           <div key={label}>
